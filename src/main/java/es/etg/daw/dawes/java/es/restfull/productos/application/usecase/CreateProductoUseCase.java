@@ -1,12 +1,14 @@
-package productos.application.usecase;
+package es.etg.daw.dawes.java.es.restfull.productos.application.usecase;
 
 import java.time.LocalDateTime;
 
-import productos.application.command.CreateProductoCommand;
-import productos.domain.model.Producto;
+import es.etg.daw.dawes.java.es.restfull.productos.application.command.CreateProductoCommand;
+import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
+
 
 public class CreateProductoUseCase {
-    public Producto create( CreateProductoCommand comando){
+	
+	public Producto create( CreateProductoCommand comando){
 
 		// Se puede usar comando.id() y no getId() por usar @Accessors(fluent = true) 
 		// en la clase CreateProductoCommand 
@@ -19,5 +21,4 @@ public class CreateProductoUseCase {
 		return producto;
 
 	}
-
 }

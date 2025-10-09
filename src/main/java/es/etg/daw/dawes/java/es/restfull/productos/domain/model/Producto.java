@@ -1,4 +1,4 @@
-package productos.domain.model;
+package es.etg.daw.dawes.java.es.restfull.productos.domain.model;
 
 import java.time.LocalDateTime;
 

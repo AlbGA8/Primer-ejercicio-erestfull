@@ -1,11 +1,11 @@
-package productos.application.services;
+package es.etg.daw.dawes.java.es.restfull.productos.application.services;
 
 import org.springframework.stereotype.Service;
 
+import es.etg.daw.dawes.java.es.restfull.productos.application.command.CreateProductoCommand;
+import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.CreateProductoUseCase;
+import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
 import lombok.RequiredArgsConstructor;
-import productos.application.command.CreateProductoCommand;
-import productos.application.usecase.CreateProductoUseCase;
-import productos.domain.model.Producto;
 
 @RequiredArgsConstructor
 @Service
@@ -17,6 +17,6 @@ public class CreateProductoService {
 	public Producto createProducto(CreateProductoCommand comando){
 		Producto producto = createProductoUseCase.create(comando);
 		return producto;
-	}
+	} 
 
 }
