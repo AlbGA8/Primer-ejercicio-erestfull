@@ -4,8 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.CreateProductoService;
+import es.etg.daw.dawes.java.es.restfull.productos.application.services.EditProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.FindProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.CreateProductoUseCase;
+import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.EditProductoUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.FindProductoUseCase;
 import lombok.RequiredArgsConstructor;
 
@@ -31,6 +33,15 @@ public class ProductoConfig {
     @Bean
     public FindProductoService findProductoService(){
         return new FindProductoService(findProductoUseCase());
+    }
+
+    @Bean
+    public EditProductoService editProductoService(){
+            return new EditProductoService(editProductoUseCase());
+    }
+    @Bean
+    public EditProductoUseCase editProductoUseCase(){
+            return new EditProductoUseCase(editProductoUseCase());
     }
 
 }

@@ -17,6 +17,5 @@ public class CreateProductoService {
 	public Producto createProducto(CreateProductoCommand comando){
 		Producto producto = createProductoUseCase.create(comando);
 		return producto;
-	} 
-
+	}
 }

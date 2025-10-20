@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.etg.daw.dawes.java.es.restfull.productos.application.command.CreateProductoCommand;
+import es.etg.daw.dawes.java.es.restfull.productos.application.command.EditProductoCommand;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.CreateProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.DeleteProductoService;
+import es.etg.daw.dawes.java.es.restfull.productos.application.services.EditProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.FindProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoRequest;
@@ -30,9 +33,10 @@ import lombok.RequiredArgsConstructor;
 
 public class ProductoController {
     
-	 private final FindProductoService findProductoService;
+	private final FindProductoService findProductoService;
 	private final CreateProductoService createProductoService;
 	private final DeleteProductoService deleteProductoService;
+	private final EditProductoService editProductoService;
 	@PostMapping //Método Post
 	public ResponseEntity<ProductoResponse> createProducto(@RequestBody ProductoRequest productoRequest) {
 		CreateProductoCommand comando = ProductoMapper.toCommand(productoRequest); 
@@ -55,6 +59,13 @@ public class ProductoController {
     public ResponseEntity<?>  deleteProducto(@PathVariable int id) {
         deleteProductoService.delete(id);
         return ResponseEntity.noContent().build(); //Devpñvemos una respuesta vacía.
+    }
+
+	 @PutMapping("/{id}")
+    public ProductoResponse editProducto(@PathVariable int id, @RequestBody ProductoRequest productoRequest){
+        EditProductoCommand comando = ProductoMapper.toCommand(id, productoRequest);
+        Producto producto = editProductoService.update(comando);
+        return  ProductoMapper.toResponse(producto); //Respuesta
     }
 	
 }
