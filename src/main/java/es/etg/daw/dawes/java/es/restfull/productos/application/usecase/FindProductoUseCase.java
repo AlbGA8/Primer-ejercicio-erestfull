@@ -1,13 +1,9 @@
 package es.etg.daw.dawes.java.es.restfull.productos.application.usecase;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-
 import es.etg.daw.dawes.java.es.restfull.productos.domain.error.ProductoNotFoundException;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.repository.ProductoRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 
@@ -15,7 +11,8 @@ import lombok.RequiredArgsConstructor;
 public class FindProductoUseCase {
 
     private final ProductoRepository productoRepository;
-    public List<Producto> findAll(){
+
+    public List<Producto> findAll() {
         List<Producto> productos = productoRepository.getAll();
 
         if (productos.isEmpty())
@@ -23,5 +20,5 @@ public class FindProductoUseCase {
 
         return productos;
     }
-    
+
 }
