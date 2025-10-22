@@ -10,15 +10,16 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 
 public class CreateProductoUseCase {
-	
- private ProductoRepository productoRepository;
 
-    public Producto create( CreateProductoCommand comando){
+    private ProductoRepository productoRepository;
 
-        Producto producto = Producto.builder() // Se puede usar comando.id y no getId por usar @Accessors(fluent = true) la clase CreateProductoCommand 
-                                    .nombre(comando.nombre())
-                                    .precio(comando.precio())
-                                    .createdAt(LocalDateTime.now()).build();
+    public Producto create(CreateProductoCommand comando) {
+
+        Producto producto = Producto.builder() // Se puede usar comando.id y no getId por usar @Accessors(fluent = true)
+                                               // la clase CreateProductoCommand
+                .nombre(comando.nombre())
+                .precio(comando.precio())
+                .createdAt(LocalDateTime.now()).build();
 
         productoRepository.save(producto);
         return producto;
