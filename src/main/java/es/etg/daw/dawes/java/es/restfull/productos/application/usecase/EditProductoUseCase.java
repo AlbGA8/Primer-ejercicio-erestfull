@@ -3,17 +3,26 @@ package es.etg.daw.dawes.java.es.restfull.productos.application.usecase;
 import java.time.LocalDateTime;
 
 import es.etg.daw.dawes.java.es.restfull.productos.application.command.EditProductoCommand;
+import es.etg.daw.dawes.java.es.restfull.productos.domain.error.ProductoNotFoundException;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
+import es.etg.daw.dawes.java.es.restfull.productos.domain.repository.ProductoRepository;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 
+@AllArgsConstructor
 public class EditProductoUseCase {
-    private final EditProductoUseCase editProductoUseCase;
 
-    public Producto update(EditProductoCommand command){
-        
-        return editProductoUseCase.update(command);
-    }
+    private final ProductoRepository productoRepository;
     
+    public Producto update(EditProductoCommand command){
+        return productoRepository.getById(command.id())
+                .map(p -> {  //Actualizamos los atributos del objeto
+                    p.setNombre(command.nombre());
+                    p.setPrecio(command.precio());
+                    return productoRepository.save(p);})
+                .orElseThrow(() -> new ProductoNotFoundException(command.id()));
+
+    }
+
 }

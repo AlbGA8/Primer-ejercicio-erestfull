@@ -1,11 +1,18 @@
 package es.etg.daw.dawes.java.es.restfull.productos.application.usecase;
 
+import es.etg.daw.dawes.java.es.restfull.productos.domain.repository.ProductoRepository;
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class DeleteProductoUseCase {
 
-    public void delete(int id) {
+     private final ProductoRepository productoRepository;
 
-        //TODO ya lo haré
+     public void delete (int id){
+        
+        productoRepository.deteteById(id);
 
-    }
+     }
+   
 
 }
