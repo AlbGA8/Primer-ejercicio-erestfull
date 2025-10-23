@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import es.etg.daw.dawes.java.es.restfull.productos.application.command.CreateProductoCommand;
 import es.etg.daw.dawes.java.es.restfull.productos.application.command.EditProductoCommand;
@@ -52,14 +54,22 @@ public class ProductoController {
 	}
 
 	
-	@GetMapping
-	public List<ProductoResponse> allProductos(){
+	 // Este método se ejecuta para la versión 1
+      //Recogemos la versión el properties
+    @Value("${api.version}")
+    private String apiVersion;
 
-	return findProductoService.findAll()
-                .stream() //Convierte la lista en un flujo
-                .map(ProductoMapper::toResponse) //Mapeamos/Convertimos cada elemento del flujo (Producto) en un objeto de Respuesta (ProductoResponse)
-                .toList(); //Lo devuelve como una lista.
-
+    @GetMapping 
+    public List<ProductoResponse> allProductos(){
+        if("1.0".equals(apiVersion)){
+            return findProductoService.findAll()
+                    .stream() //Convierte la lista en un flujo
+                    .map(ProductoMapper::toResponse) //Mapeamos/Convertimos cada elemento del flujo (Producto) en un objeto de Respuesta (ProductoResponse)
+                    .toList(); //Lo devuelve como una lista.
+        }else{
+            // Lanzamos una excepción con el error
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Versión del API incorrecta");
+        }
     }
 
 	 @DeleteMapping("/{id}")
@@ -86,5 +96,9 @@ public class ProductoController {
         });
         return errors;
     }
+
+    
+
+    
 	
 }
