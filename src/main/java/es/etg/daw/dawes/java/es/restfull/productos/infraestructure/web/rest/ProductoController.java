@@ -59,8 +59,10 @@ public class ProductoController {
     @Value("${api.version}")
     private String apiVersion;
 
+  
     @GetMapping 
     public List<ProductoResponse> allProductos(){
+        //if(true) throw new NullPointerException();
         if("1.0".equals(apiVersion)){
             return findProductoService.findAll()
                     .stream() //Convierte la lista en un flujo
@@ -70,6 +72,7 @@ public class ProductoController {
             // Lanzamos una excepción con el error
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Versión del API incorrecta");
         }
+        
     }
 
 	 @DeleteMapping("/{id}")
@@ -97,6 +100,8 @@ public class ProductoController {
         return errors;
     }
 
+
+    
     
 
     
