@@ -11,10 +11,15 @@ import lombok.Data;
 @Builder
 public class Producto {
 
+    public Producto(ProductoId i, String string, double d, LocalDateTime now) {
+        //TODO Auto-generated constructor stub
+    }
     // Atributos
-	private int id;
+	private ProductoId id;
 	private String nombre;
 	private double precio;
 	private LocalDateTime createdAt;
+	//agregamos la categoria
+	private CategoriaId categoria;
 
 }

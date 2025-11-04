@@ -1,4 +1,4 @@
-package es.etg.daw.dawes.java.es.restfull.productos.application.command;
+package es.etg.daw.dawes.java.es.restfull.productos.application.command.producto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

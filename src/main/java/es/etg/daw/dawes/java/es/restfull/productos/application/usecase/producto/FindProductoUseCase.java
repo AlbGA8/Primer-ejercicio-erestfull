@@ -1,4 +1,4 @@
-package es.etg.daw.dawes.java.es.restfull.productos.application.usecase;
+package es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto;
 
 import java.util.List;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.error.ProductoNotFoundException;

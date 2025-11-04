@@ -1,10 +1,10 @@
-package es.etg.daw.dawes.java.es.restfull.productos.application.services;
+package es.etg.daw.dawes.java.es.restfull.productos.application.services.producto;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.FindProductoUseCase;
+import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.FindProductoUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
 import lombok.RequiredArgsConstructor;
 

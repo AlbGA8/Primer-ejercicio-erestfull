@@ -1,4 +1,4 @@
-package es.etg.daw.dawes.java.es.restfull.productos.domain.error;
+package es.etg.daw.dawes.java.es.restfull.common.domain.error;
 
 
 public class EntityNotFoundException extends RuntimeException{

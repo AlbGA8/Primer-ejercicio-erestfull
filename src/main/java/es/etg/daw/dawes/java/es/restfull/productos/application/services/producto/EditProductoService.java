@@ -1,9 +1,9 @@
-package es.etg.daw.dawes.java.es.restfull.productos.application.services;
+package es.etg.daw.dawes.java.es.restfull.productos.application.services.producto;
 
 import org.springframework.stereotype.Service;
 
-import es.etg.daw.dawes.java.es.restfull.productos.application.command.EditProductoCommand;
-import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.EditProductoUseCase;
+import es.etg.daw.dawes.java.es.restfull.productos.application.command.producto.EditProductoCommand;
+import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.EditProductoUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
 import lombok.RequiredArgsConstructor;
 
