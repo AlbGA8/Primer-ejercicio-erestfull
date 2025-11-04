@@ -10,7 +10,6 @@ import lombok.experimental.Accessors;
 
 public class CreateProductoCommand {
 
-
 	private String nombre;
 	private double precio;
 

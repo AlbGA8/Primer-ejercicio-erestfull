@@ -12,6 +12,6 @@ public class EditCategoriaCommand {
 
     private CategoriaId id;
 	private String nombre;
-	private double precio;
+	
 
 }

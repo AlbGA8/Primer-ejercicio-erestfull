@@ -7,7 +7,7 @@ import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto.DeleteProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto.EditProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto.FindProductoService;
-import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.CreateProductoUseCase;
+import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.CreateCategoriaUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.DeleteProductoUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.EditProductoUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.FindProductoUseCase;
@@ -22,9 +22,9 @@ public class ProductoConfig {
     private final ProductoRepository productoRepository;
 
     @Bean
-    public CreateProductoUseCase createProductoUseCase() {
+    public CreateCategoriaUseCase createProductoUseCase() {
         // Añadimos en la llamada una instancia de nuestro MOCK.
-        return new CreateProductoUseCase(productoRepository);
+        return new CreateCategoriaUseCase(productoRepository);
     }
 
     @Bean

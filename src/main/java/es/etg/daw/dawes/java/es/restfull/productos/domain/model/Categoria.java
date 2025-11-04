@@ -10,6 +10,8 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class Categoria {
+
+   
         // Atributos
         private String nombre;
         private CategoriaId id;
