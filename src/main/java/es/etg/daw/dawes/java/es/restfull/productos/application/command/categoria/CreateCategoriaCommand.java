@@ -10,6 +10,6 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 public class CreateCategoriaCommand {
     
-    private String nombre;
+    protected String nombre;
 
 }

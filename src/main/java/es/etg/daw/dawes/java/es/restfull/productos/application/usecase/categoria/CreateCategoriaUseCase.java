@@ -6,12 +6,13 @@ import es.etg.daw.dawes.java.es.restfull.productos.application.command.categoria
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Categoria;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.repository.CategoriaRepository;
 import lombok.AllArgsConstructor;
+import lombok.experimental.Accessors;
 
 @AllArgsConstructor
-
+@Accessors(fluent = true)
 public class CreateCategoriaUseCase {
 
-    private CategoriaRepository categoriaRepository;
+    private final CategoriaRepository categoriaRepository;
 
     public Categoria create(CreateCategoriaCommand comando) {
 

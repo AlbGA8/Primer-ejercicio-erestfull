@@ -3,6 +3,7 @@ package es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.map
 import es.etg.daw.dawes.java.es.restfull.productos.application.command.producto.CreateProductoCommand;
 import es.etg.daw.dawes.java.es.restfull.productos.application.command.producto.EditProductoCommand;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
+import es.etg.daw.dawes.java.es.restfull.productos.domain.model.ProductoId;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoRequest;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoResponse;
 
@@ -12,14 +13,17 @@ public class ProductoMapper {
 		return new CreateProductoCommand(productoRequest.nombre(), productoRequest.precio());
 	}
 
-	public static ProductoResponse toResponse(Producto producto){
-		return new ProductoResponse(producto.getId(),
-									producto.getNombre(),
-									producto.getPrecio(),
-									producto.getCreatedAt());
-	}
 	public static EditProductoCommand toCommand(int id, ProductoRequest productoRequest){
-		return new EditProductoCommand(id, productoRequest.nombre(), productoRequest.precio());
-	}
+        //pasamos del int a ProductoId
+        return new EditProductoCommand(new ProductoId(id), productoRequest.nombre(), productoRequest.precio());
+    }
 
+
+	    public static ProductoResponse toResponse(Producto producto){
+        return new ProductoResponse(producto.getId().getValue(), //lo pasamos a int
+                                    producto.getNombre(),
+                                    producto.getPrecio(),
+                                    producto.getCreatedAt(),
+                                    producto.getCategoria().getValue());//Agregamos la categoria.
+    }
 }

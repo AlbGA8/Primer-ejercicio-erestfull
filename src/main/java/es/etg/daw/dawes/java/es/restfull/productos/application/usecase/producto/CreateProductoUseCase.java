@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 
 public class CreateProductoUseCase {
 
-    private ProductoRepository productoRepository;
+    private final ProductoRepository productoRepository;
 
     public Producto create(CreateProductoCommand comando) {
 
