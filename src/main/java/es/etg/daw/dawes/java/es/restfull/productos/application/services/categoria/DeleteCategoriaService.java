@@ -11,7 +11,7 @@ public class DeleteCategoriaService {
 
     public void delete(CategoriaId id) {
 
-        deleteCategoriaUseCase.deleteById(id);
+        deleteCategoriaUseCase.delete(id);
         
 
     }

@@ -7,7 +7,6 @@ import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto.DeleteProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto.EditProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto.FindProductoService;
-import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.categoria.CreateCategoriaUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.CreateProductoUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.DeleteProductoUseCase;
 import es.etg.daw.dawes.java.es.restfull.productos.application.usecase.producto.EditProductoUseCase;
