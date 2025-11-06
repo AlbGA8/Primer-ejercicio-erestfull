@@ -7,7 +7,6 @@ import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.CategoriaRequest;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.CategoriaResponse;
 
-
 public class CategoriaMapper {
 
     public static CreateCategoriaCommand toCommand(CategoriaRequest categoriaRequest){
@@ -21,9 +20,12 @@ public class CategoriaMapper {
 
 
 	    public static CategoriaResponse toResponse(Categoria categoria){
-        return new CategoriaResponse(categoria.getNombre(),
-                                    categoria.getCreatedAt());
+        return new CategoriaResponse(categoria.getId().getValue()
+                                    , categoria.getNombre()
+                                    , categoria.getCreatedAt());
                               
-                                }
+  }
 
 }
+
+

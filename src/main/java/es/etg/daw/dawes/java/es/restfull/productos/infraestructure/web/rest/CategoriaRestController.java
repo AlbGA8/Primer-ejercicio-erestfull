@@ -20,18 +20,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
-import es.etg.daw.dawes.java.es.restfull.productos.application.command.producto.CreateProductoCommand;
-import es.etg.daw.dawes.java.es.restfull.productos.application.command.producto.EditProductoCommand;
+import es.etg.daw.dawes.java.es.restfull.productos.application.command.categoria.CreateCategoriaCommand;
+import es.etg.daw.dawes.java.es.restfull.productos.application.command.categoria.EditCategoriaCommand;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.categoria.CreateCategoriaService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.categoria.DeleteCategoriaService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.categoria.EditCategoriaService;
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.categoria.FindCategoriaService;
-import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
-import es.etg.daw.dawes.java.es.restfull.productos.domain.model.ProductoId;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoRequest;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoResponse;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.mapper.ProductoMapper;
+import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Categoria;
+import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.CategoriaRequest;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.CategoriaResponse;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.mapper.CategoriaMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -41,16 +40,18 @@ import lombok.RequiredArgsConstructor;
 
 public class CategoriaRestController {
 
-    private final FindCategoriaService findCategoriatoService;
+    private final FindCategoriaService findCategoriaService;
 	private final CreateCategoriaService createCategoriaService;
 	private final DeleteCategoriaService deleteCategoriaService;
 	private final EditCategoriaService editCategoriaService;
 
+
     @PostMapping //Método Post
-	public ResponseEntity<ProductoResponse> createProducto(@Valid @RequestBody ProductoRequest productoRequest) {
-		CreateProductoCommand comando = ProductoMapper.toCommand(productoRequest); 
-		Producto producto = createProductoService.createProducto(comando);
-		return ResponseEntity.status(HttpStatus.CREATED).body(ProductoMapper.toResponse(producto)); //Respuestagit@github.com:julparper/dawes-springboot-restful.git
+	public ResponseEntity<CategoriaResponse> createProducto(@Valid @RequestBody CategoriaRequest categoriaRequest) {
+		
+        CreateCategoriaCommand comando = CategoriaMapper.toCommand(categoriaRequest); 
+		Categoria categoria = createCategoriaService.createCategoria(comando);
+		return ResponseEntity.status(HttpStatus.CREATED).body(CategoriaMapper.toResponse(categoria)); //Respuestagit@github.com:julparper/dawes-springboot-restful.git
 	}
 
 	
@@ -61,12 +62,12 @@ public class CategoriaRestController {
 
   
     @GetMapping 
-    public List<ProductoResponse> allProductos(){
+    public List<CategoriaResponse> allCategorias(){
         //if(true) throw new NullPointerException();
         if("1.0".equals(apiVersion)){
-            return findProductoService.findAll()
+            return findCategoriaService.findAll()
                     .stream() //Convierte la lista en un flujo
-                    .map(ProductoMapper::toResponse) //Mapeamos/Convertimos cada elemento del flujo (Producto) en un objeto de Respuesta (ProductoResponse)
+                    .map(CategoriaMapper::toResponse) //Mapeamos/Convertimos cada elemento del flujo (Producto) en un objeto de Respuesta (ProductoResponse)
                     .toList(); //Lo devuelve como una lista.
         }else{
             // Lanzamos una excepción con el error
@@ -76,16 +77,16 @@ public class CategoriaRestController {
     }
 
 	 @DeleteMapping("/{id}")
-    public ResponseEntity<?>  deleteProducto(@PathVariable ProductoId id) {
-        deleteProductoService.delete(id);
+    public ResponseEntity<?>  deleteProducto(@PathVariable CategoriaId id) {
+        deleteCategoriaService.delete(id);
         return ResponseEntity.noContent().build(); //Devpñvemos una respuesta vacía.
     }
 
 	 @PutMapping("/{id}")
-    public ProductoResponse editProducto(@PathVariable int id, @RequestBody ProductoRequest productoRequest){
-        EditProductoCommand comando = ProductoMapper.toCommand(id, productoRequest);
-        Producto producto = editProductoService.update(comando);
-        return  ProductoMapper.toResponse(producto); //Respuesta
+    public CategoriaResponse editCategoria(@PathVariable int id, @RequestBody CategoriaRequest categoriaRequest){
+        EditCategoriaCommand comando = CategoriaMapper.toCommand(id, categoriaRequest);
+        Categoria categoria = editCategoriaService.update(comando);
+        return  CategoriaMapper.toResponse(categoria); //Respuesta
     }
 
 	 @ResponseStatus(HttpStatus.BAD_REQUEST)
