@@ -4,7 +4,7 @@ import es.etg.daw.dawes.java.es.restfull.common.domain.repository.CRUDRepository
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Categoria;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
 
-public interface CategoriaRepository extends CRUDRepository<Categoria, CategoriaId> {
+public  interface CategoriaRepository extends CRUDRepository<Categoria, CategoriaId> {
 
     Optional<Categoria> getByName(String name);
     Optional<Categoria> getById(CategoriaId categoriaId);
