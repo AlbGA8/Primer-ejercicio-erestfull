@@ -11,7 +11,7 @@ import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.repository.CategoriaRepository;
 
 @Repository
-public abstract class CategoriaRepositoryMockImpl implements CategoriaRepository {
+public class CategoriaRepositoryMockImpl implements CategoriaRepository {
     private final Map<CategoriaId, Categoria> categorias = CategoriaFactory.getDemoData();
     
     @Override
@@ -52,6 +52,12 @@ public abstract class CategoriaRepositoryMockImpl implements CategoriaRepository
     @Override
     public void deteteById(CategoriaId id) {
         categorias.remove(id);
+    }
+
+    @Override
+    public Optional<Categoria> getByName(String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getByName'");
     }
 
 }

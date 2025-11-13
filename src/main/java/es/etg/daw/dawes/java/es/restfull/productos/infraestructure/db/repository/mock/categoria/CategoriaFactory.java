@@ -5,6 +5,7 @@ import java.util.Map;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Categoria;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
 
+
 public class CategoriaFactory {
 
     public static final Map<CategoriaId, Categoria> getDemoData(){
@@ -14,6 +15,10 @@ public class CategoriaFactory {
         datos.put(new CategoriaId(1), new Categoria("Categoria 1", new CategoriaId(1), LocalDateTime.now()));
         datos.put(new CategoriaId(2), new Categoria("Categoria 2", new CategoriaId(1), LocalDateTime.now()));
         return datos;
+    }
+
+    public static final Categoria create(){
+        return new Categoria("categoria de prueba",new CategoriaId(1), LocalDateTime.now());
     }
     
 }

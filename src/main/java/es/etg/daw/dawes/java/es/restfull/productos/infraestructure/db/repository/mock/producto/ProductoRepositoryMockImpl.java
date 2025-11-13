@@ -10,43 +10,39 @@ import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.ProductoId;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.repository.ProductoRepository;
 
+
 @Repository
-public abstract class ProductoRepositoryMockImpl implements ProductoRepository {
+
+
+public class ProductoRepositoryMockImpl implements ProductoRepository {
 
     private final Map<ProductoId, Producto> productos = ProductoFactory.getDemoData();
 
-    @Override
+     @Override
     public Producto save(Producto t) {
-        // create
-        if (t.getId() == null)
-            t.setId(new ProductoId(obtenerSiguienteId()));
+            //create
+        if(t.getId()==null) t.setId(new ProductoId(obtenerSiguienteId()));
 
         productos.put(t.getId(), t);
         return t;
     }
 
-    @Override
-    public List<Producto> getAll() {
-        return new ArrayList<>(productos.values());
-    }
-
-    private int obtenerSiguienteId() {
+    private int obtenerSiguienteId(){
         ProductoId ultimo = null;
-        if (!productos.isEmpty()) {
+        if(!productos.isEmpty()){
             Collection<Producto> lista = productos.values();
-
+            
             for (Producto p : lista) {
                 ultimo = p.getId();
             }
 
         }
-        return ultimo.getValue() + 1;
+        return ultimo.getValue()+1;
     }
 
     @Override
     public Optional<Producto> getById(ProductoId id) {
-        // Un optional puede tener una valor o no. Si no existe el producto devuelve
-        // Optional.empty
+        //Un optional puede tener una valor o no. Si no existe el producto devuelve Optional.empty
         return Optional.ofNullable(productos.get(id));
     }
 
@@ -55,4 +51,14 @@ public abstract class ProductoRepositoryMockImpl implements ProductoRepository {
         productos.remove(id);
     }
 
+    @Override
+    public List<Producto> getAll() {
+         return new ArrayList<>(productos.values());
+    }
+
+    @Override
+    public Optional<Producto> getByName(String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getByName'");
+    }
 }
