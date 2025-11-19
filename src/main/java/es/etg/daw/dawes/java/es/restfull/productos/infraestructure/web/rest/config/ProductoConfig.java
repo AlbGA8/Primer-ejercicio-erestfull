@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductoConfig {
 
     private final ProductoRepository productoRepository;
+    
 
         @Bean
     public CreateProductoUseCase createProductoUseCase() {
@@ -60,5 +61,7 @@ public class ProductoConfig {
     public DeleteProductoUseCase deleteProductoUseCase() {
         return new DeleteProductoUseCase(productoRepository);
     }
+
+    
 
 }
