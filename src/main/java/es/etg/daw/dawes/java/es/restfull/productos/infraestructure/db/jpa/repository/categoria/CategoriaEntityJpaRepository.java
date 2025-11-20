@@ -10,5 +10,5 @@ public interface CategoriaEntityJpaRepository extends JpaRepository<CategoriaEnt
     // Hereda automáticamente métodos como: save(), findById(), findAll(), delete(),
     // etc.
 
-    public CategoriaEntity findByNombre(String nombre);
+
 }
