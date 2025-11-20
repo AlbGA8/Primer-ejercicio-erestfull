@@ -21,6 +21,7 @@ public class ProductoConfig {
 
     private final ProductoRepository productoRepository;
     
+    
 
         @Bean
     public CreateProductoUseCase createProductoUseCase() {

@@ -4,7 +4,7 @@ package es.etg.daw.dawes.java.es.restfull.infraestructure.web.res;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 
 
 import java.util.List;
