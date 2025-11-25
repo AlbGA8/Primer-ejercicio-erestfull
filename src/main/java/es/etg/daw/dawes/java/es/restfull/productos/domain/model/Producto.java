@@ -11,9 +11,7 @@ import lombok.Data;
 @Builder
 public class Producto {
 
-    public Producto(ProductoId i, String string, double d, LocalDateTime now) {
-        //TODO Auto-generated constructor stub
-    }
+  
     // Atributos
 	private ProductoId id;
 	private String nombre;

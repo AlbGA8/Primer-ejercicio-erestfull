@@ -8,10 +8,7 @@ import es.etg.daw.dawes.java.es.restfull.productos.application.command.categoria
 import es.etg.daw.dawes.java.es.restfull.productos.application.command.categoria.EditCategoriaCommand;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Categoria;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
-import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
-import es.etg.daw.dawes.java.es.restfull.productos.domain.model.ProductoId;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.db.jpa.entity.categoria.CategoriaEntity;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.db.jpa.entity.producto.ProductoEntity;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.CategoriaRequest;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.CategoriaResponse;
 
