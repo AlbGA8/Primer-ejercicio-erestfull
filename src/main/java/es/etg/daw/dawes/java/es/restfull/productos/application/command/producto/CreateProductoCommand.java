@@ -1,5 +1,6 @@
 package es.etg.daw.dawes.java.es.restfull.productos.application.command.producto;
 
+import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -12,5 +13,6 @@ public class CreateProductoCommand {
 
 	private String nombre;
 	private double precio;
+	private CategoriaId categoriaId;
 
 }

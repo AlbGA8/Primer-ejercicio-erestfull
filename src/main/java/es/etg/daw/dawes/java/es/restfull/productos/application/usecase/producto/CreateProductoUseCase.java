@@ -19,6 +19,7 @@ public class CreateProductoUseCase {
                                                // la clase CreateProductoCommand
                 .nombre(comando.nombre())
                 .precio(comando.precio())
+                .categoria(comando.categoriaId())
                 .createdAt(LocalDateTime.now()).build();
 
        

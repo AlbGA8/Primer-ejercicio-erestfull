@@ -2,7 +2,9 @@ package es.etg.daw.dawes.java.es.restfull;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
+@EnableCaching // Activamos la caché
 @SpringBootApplication
 public class RestfullApplication {
 

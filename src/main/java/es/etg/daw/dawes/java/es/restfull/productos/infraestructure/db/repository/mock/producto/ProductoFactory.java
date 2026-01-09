@@ -21,6 +21,6 @@ public class ProductoFactory {
     }
 
     public static final Producto create(){
-        return new Producto(new ProductoId(1),"Producto de purueba", 2.10, LocalDateTime.now(), new CategoriaId(1));
+        return new Producto(new ProductoId(1),"Producto", 2.10, LocalDateTime.now(), new CategoriaId(1));
     }
 }

@@ -17,7 +17,7 @@ import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.
 public class ProductoMapper {
 
     public static CreateProductoCommand toCommand(ProductoRequest productoRequest){
-		return new CreateProductoCommand(productoRequest.nombre(), productoRequest.precio());
+		return new CreateProductoCommand(productoRequest.nombre(), productoRequest.precio(), new CategoriaId(productoRequest.categoria()));
 	}
 
 	public static EditProductoCommand toCommand(int id, ProductoRequest productoRequest){

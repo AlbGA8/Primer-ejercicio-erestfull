@@ -7,12 +7,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class DeleteProductoUseCase {
 
-   private final ProductoRepository productoRepository;
-
-   public void delete(ProductoId id) {
-
-      productoRepository.deteteById(id);
-
-   }
+    private final ProductoRepository productoRepository;
+    
+    public void delete(ProductoId id){ //Lo cambiamos
+        productoRepository.deteteById(id);
+    }
 
 }

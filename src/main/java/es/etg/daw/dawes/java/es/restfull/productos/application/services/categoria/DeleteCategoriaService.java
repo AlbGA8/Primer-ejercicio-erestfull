@@ -13,7 +13,6 @@ public class DeleteCategoriaService {
 
         deleteCategoriaUseCase.delete(id);
         
-
     }
 
 
