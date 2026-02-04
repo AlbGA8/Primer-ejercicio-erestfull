@@ -35,8 +35,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.ProductoId;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.db.repository.mock.producto.ProductoFactory;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoRequest;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoResponse;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.dto.ProductoRequest;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.dto.ProductoResponse;
 
 
 

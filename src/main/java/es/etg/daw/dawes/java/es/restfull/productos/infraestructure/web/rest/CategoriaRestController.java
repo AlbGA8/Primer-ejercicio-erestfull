@@ -28,9 +28,9 @@ import es.etg.daw.dawes.java.es.restfull.productos.application.services.categori
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.categoria.FindCategoriaService;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Categoria;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.CategoriaRequest;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.CategoriaResponse;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.mapper.CategoriaMapper;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.mapper.CategoriaMapper;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.dto.CategoriaRequest;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.dto.CategoriaResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 

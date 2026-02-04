@@ -29,67 +29,76 @@ import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto
 import es.etg.daw.dawes.java.es.restfull.productos.application.services.producto.FindProductoService;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Producto;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.ProductoId;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoRequest;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.dto.ProductoResponse;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.mapper.ProductoMapper;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.mapper.ProductoMapper;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.dto.ProductoRequest;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.dto.ProductoResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/productos") 
+@RequestMapping("/productos")
 @RequiredArgsConstructor
-
-
+@Tag(name = "Productos", description = "Operaciones relacionadas con la gestión de productos")
 
 public class ProductoController {
-    
-	private final FindProductoService findProductoService;
-	private final CreateProductoService createProductoService;
-	private final DeleteProductoService deleteProductoService;
-	private final EditProductoService editProductoService;
-	@PostMapping //Método Post
-	public ResponseEntity<ProductoResponse> createProducto(@Valid @RequestBody ProductoRequest productoRequest) {
-		CreateProductoCommand comando = ProductoMapper.toCommand(productoRequest); 
-		Producto producto = createProductoService.createProducto(comando);
-		return ResponseEntity.status(HttpStatus.CREATED).body(ProductoMapper.toResponse(producto)); //Respuestagit@github.com:julparper/dawes-springboot-restful.git
-	}
 
-	
-	 // Este método se ejecuta para la versión 1
-      //Recogemos la versión el properties
+    private final FindProductoService findProductoService;
+    private final CreateProductoService createProductoService;
+    private final DeleteProductoService deleteProductoService;
+    private final EditProductoService editProductoService;
+
+    @Operation(summary = "Obtiene el listado de productos", description = "Busca en la base de datos todos los productos y sus detalles")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Listado de productos generado"),
+            @ApiResponse(responseCode = "404", description = "No hay productos en la base de datos")
+    })
+
+    @PostMapping // Método Post
+    public ResponseEntity<ProductoResponse> createProducto(@Valid @RequestBody ProductoRequest productoRequest) {
+        CreateProductoCommand comando = ProductoMapper.toCommand(productoRequest);
+        Producto producto = createProductoService.createProducto(comando);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ProductoMapper.toResponse(producto)); // Respuestagit@github.com:julparper/dawes-springboot-restful.git
+    }
+
+    // Este método se ejecuta para la versión 1
+    // Recogemos la versión el properties
     @Value("${api.version}")
     private String apiVersion;
 
-  
-    @GetMapping 
-    public List<ProductoResponse> allProductos(){
-        //if(true) throw new NullPointerException();
-        if("1.0".equals(apiVersion)){
+    @GetMapping
+    public List<ProductoResponse> allProductos() {
+        // if(true) throw new NullPointerException();
+        if ("1.0".equals(apiVersion)) {
             return findProductoService.findAll()
-                    .stream() //Convierte la lista en un flujo
-                    .map(ProductoMapper::toResponse) //Mapeamos/Convertimos cada elemento del flujo (Producto) en un objeto de Respuesta (ProductoResponse)
-                    .toList(); //Lo devuelve como una lista.
-        }else{
+                    .stream() // Convierte la lista en un flujo
+                    .map(ProductoMapper::toResponse) // Mapeamos/Convertimos cada elemento del flujo (Producto) en un
+                                                     // objeto de Respuesta (ProductoResponse)
+                    .toList(); // Lo devuelve como una lista.
+        } else {
             // Lanzamos una excepción con el error
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Versión del API incorrecta");
         }
-        
+
     }
 
-	 @DeleteMapping("/{id}")
-    public ResponseEntity<?>  deleteProducto(@PathVariable int id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProducto(@PathVariable int id) {
         deleteProductoService.delete(new ProductoId(id));
-        return ResponseEntity.noContent().build(); //Devpñvemos una respuesta vacía.
+        return ResponseEntity.noContent().build(); // Devpñvemos una respuesta vacía.
     }
 
-	 @PutMapping("/{id}")
-    public ProductoResponse editProducto(@PathVariable int id, @RequestBody ProductoRequest productoRequest){
+    @PutMapping("/{id}")
+    public ProductoResponse editProducto(@PathVariable int id, @RequestBody ProductoRequest productoRequest) {
         EditProductoCommand comando = ProductoMapper.toCommand(id, productoRequest);
         Producto producto = editProductoService.update(comando);
-        return  ProductoMapper.toResponse(producto); //Respuesta
+        return ProductoMapper.toResponse(producto); // Respuesta
     }
 
-	 @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
@@ -101,10 +110,4 @@ public class ProductoController {
         return errors;
     }
 
-
-    
-    
-
-    
-	
 }

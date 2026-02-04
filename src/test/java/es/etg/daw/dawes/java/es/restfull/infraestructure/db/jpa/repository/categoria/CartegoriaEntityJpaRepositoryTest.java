@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.db.jpa.repository.categoria.CategoriaEntityJpaRepository;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.db.repository.mock.categoria.CategoriaFactory;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.mapper.CategoriaMapper;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.mapper.CategoriaMapper;
 
 
 

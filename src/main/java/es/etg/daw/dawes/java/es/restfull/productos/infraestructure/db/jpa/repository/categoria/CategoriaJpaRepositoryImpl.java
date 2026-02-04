@@ -7,7 +7,7 @@ import es.etg.daw.dawes.java.es.restfull.productos.domain.model.Categoria;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.model.CategoriaId;
 import es.etg.daw.dawes.java.es.restfull.productos.domain.repository.CategoriaRepository;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.db.jpa.entity.categoria.CategoriaEntity;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.mapper.CategoriaMapper;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.mapper.CategoriaMapper;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

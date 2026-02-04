@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.db.jpa.repository.producto.ProductoEntityJpaRepository;
 import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.db.repository.mock.producto.ProductoFactory;
-import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.web.rest.mapper.ProductoMapper;
+import es.etg.daw.dawes.java.es.restfull.productos.infraestructure.mapper.ProductoMapper;
 
 
 
